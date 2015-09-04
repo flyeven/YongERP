@@ -33,9 +33,9 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlEx1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -68,8 +68,8 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn6,
             this.gridColumn3,
+            this.gridColumn6,
             this.gridColumn4,
             this.gridColumn5});
             this.gridView1.GridControl = this.gridControlEx1;
@@ -83,7 +83,7 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "货物名称";
+            this.gridColumn1.Caption = "商品名称";
             this.gridColumn1.FieldName = "ItemName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
@@ -91,7 +91,7 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "货物编码";
+            this.gridColumn2.Caption = "商品编码";
             this.gridColumn2.FieldName = "ItemNo";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
@@ -99,19 +99,11 @@
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "价格";
+            this.gridColumn6.Caption = "售价";
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "积分";
-            this.gridColumn3.FieldName = "PointFee";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn6.VisibleIndex = 3;
             // 
             // gridColumn4
             // 
@@ -130,6 +122,14 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "成本";
+            this.gridColumn3.FieldName = "CostPrice";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
             // 
             // MainView
             // 

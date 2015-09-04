@@ -67,8 +67,14 @@ namespace Ultra.Inventory {
         }
 
         void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            var whr = string.Empty;
+
+            if(!string.IsNullOrEmpty(txtItem.Text.Trim())){
+                whr = string.Format(" where itemname like '%{0}% or itemno like '%{0}%",txtItem.Text.Trim());
+            }
+
             using (var db = new Database()) {
-                gcInvt.DataSource = db.Fetch<t_inventory>(" select * from t_inventory");
+                gcInvt.DataSource = db.Fetch<t_inventory>(" select * from t_inventory " +whr);
             }
         }
     }

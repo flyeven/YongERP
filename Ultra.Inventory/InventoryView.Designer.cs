@@ -130,7 +130,7 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "货物名称";
+            this.gridColumn1.Caption = "商品名称";
             this.gridColumn1.FieldName = "ItemName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
@@ -138,7 +138,7 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "货物编码";
+            this.gridColumn2.Caption = "商品编码";
             this.gridColumn2.FieldName = "ItemNo";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
@@ -163,18 +163,24 @@
             this.gridColumn9.Caption = "仓库";
             this.gridColumn9.FieldName = "WareName";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 3;
             // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "区域";
             this.gridColumn7.FieldName = "AreaName";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 4;
             // 
             // gridColumn8
             // 
             this.gridColumn8.Caption = "库位";
             this.gridColumn8.FieldName = "LocName";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 5;
             // 
             // InventoryView
             // 

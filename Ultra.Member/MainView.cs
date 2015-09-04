@@ -35,8 +35,7 @@ namespace Ultra.Member
         public List<Ultra.Surface.Interfaces.PermitGridView> Grids {
             get {
                 return new List<Ultra.Surface.Interfaces.PermitGridView> { 
-                    new Ultra.Surface.Interfaces.PermitGridView(this.gridView1,"顾客信息"),
-                    new Ultra.Surface.Interfaces.PermitGridView(this.gridView2,"修改记录")
+                    new Ultra.Surface.Interfaces.PermitGridView(this.gridView1,"客户信息")
                 };
             }
         }
@@ -74,12 +73,6 @@ namespace Ultra.Member
             myBar.btnExport.ItemClick += barBtnExport_memberClick;
             myBar.btnUsing.ItemClick += btnUsing_ItemClick;
             myBar.btnUnUsing.ItemClick += btnUnUsing_ItemClick;
-            gridView1.FocusedRowChanged += gridView1_FocusedRowChanged;
-        }
-
-        void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
-            
-
         }
 
         void btnUnUsing_ItemClick(object sender, ItemClickEventArgs e) {
@@ -141,7 +134,6 @@ namespace Ultra.Member
             vw.GuidKey = et.Guid;
             if (vw.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 barBtnRefresh_ItemClick(sender, null);
-                gridView1_FocusedRowChanged(null, null);
             }
             
         }

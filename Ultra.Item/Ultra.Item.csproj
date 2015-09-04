@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportView.Designer.cs">
+      <DependentUpon>ImportView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ImportView.resx">
+      <DependentUpon>ImportView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +84,14 @@
     <ProjectReference Include="..\DbEntity\DbEntity.csproj">
       <Project>{0113c4b0-c116-4cba-a617-f7ee5be9c4fb}</Project>
       <Name>DbEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ultra.Controls\Ultra.Controls.csproj">
+      <Project>{728d000a-6853-4542-bfbf-596dd0c57e54}</Project>
+      <Name>Ultra.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ultra.Excel\Ultra.Excel.csproj">
+      <Project>{fcdebed7-b317-4c95-8302-0bc9880293f2}</Project>
+      <Name>Ultra.Excel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ultra.Surface\Ultra.Surface.csproj">
       <Project>{cb518407-658a-43dd-887c-882eae1f7b23}</Project>

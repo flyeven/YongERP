@@ -12,13 +12,13 @@ using Ultra.Surface.Common;
 using Ultra.Surface.Form;
 using Ultra.Surface.Lanuch;
 using Ultra.Web.Core.Common;
+using Ultra.Web.Core.Configuration;
 using Ultra.Web.Core.Interface;
 
 namespace Entry
 {
     static class Program
     {
-
         static Ultra.Log.ApplicationLog AppLog;
 
         /// <summary>
@@ -36,6 +36,8 @@ namespace Entry
 
             AppLog = new Ultra.Log.ApplicationLog();
         __start:
+
+
             string con = string.Empty;
             BaseSurface vw;
             vw = Lanucher.Start("Ultra.Login.LoginView");//.ShowDialog();

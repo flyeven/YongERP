@@ -25,8 +25,10 @@ namespace Ultra.Inventory {
         }
 
         private void InStockEditView_Load(object sender, EventArgs e) {
+
             //生成入库单号
             using (var db = new Database()) {
+                rspLoc.DataSource = db.Fetch<t_location>(" where isusing=1");
                 rspItem.DataSource = db.Fetch<t_item>(" where isnull(isusing,0)=1 ");
 
                 if (EditMode == Ultra.Web.Core.Enums.EnViewEditMode.New) {
@@ -34,15 +36,15 @@ namespace Ultra.Inventory {
                     GuidKey = Guid.NewGuid();
                     txtInStockNo.Text = InStockNo;
                 } else {
-                    txtInStockNo.Text= InStockNo = InStock.InStockNo;
+                    txtInStockNo.Text = InStockNo = InStock.InStockNo;
                     txtOuterNo.Text = InStock.OuterNo;
-                    gcOrder.DataSource = db.Fetch<t_instockitem>(" where instockno=@0", InStock.InStockNo);
+                    gcItem.DataSource = db.Fetch<t_instockitem>(" where instockno=@0", InStock.InStockNo);
                 }
             }
         }
 
         private void btnAddOrder_Click(object sender, EventArgs e) {
-            var odrs = gcOrder.GetDataSource<t_instockitem>();
+            var odrs = gcItem.GetDataSource<t_instockitem>();
             odrs = odrs ?? new List<t_instockitem>();
 
             var newodr = new t_instockitem();
@@ -51,22 +53,22 @@ namespace Ultra.Inventory {
             newodr.CreateDate = TimeSync.Default.CurrentSyncTime;
             newodr.Creator = this.CurUser;
             odrs.Add(newodr);
-            gcOrder.DataSource = odrs;
-            gcOrder.RefreshDataSource();
+            gcItem.DataSource = odrs;
+            gcItem.RefreshDataSource();
         }
 
         private void btnDelOrder_Click(object sender, EventArgs e) {
-            gcOrder.RemoveSelected();
+            gcItem.RemoveSelected();
         }
 
         private void btnOK_Click(object sender, EventArgs e) {
-            var items=gcOrder.GetDataSource<t_instockitem>();
+            var items = gcItem.GetDataSource<t_instockitem>();
             if (items == null || items.Count < 1) {
-                MsgBox.ShowMessage("","没有商品信息,不能保存!");
+                MsgBox.ShowMessage("", "没有商品信息,不能保存!");
                 return;
             }
-            if(items.Any(K=> string.IsNullOrEmpty(K.ItemNo))){
-                MsgBox.ShowMessage("","商品信息不完整!");
+            if (items.Any(K => string.IsNullOrEmpty(K.ItemNo))) {
+                MsgBox.ShowMessage("", "商品信息不完整!");
                 return;
             }
 
@@ -74,13 +76,13 @@ namespace Ultra.Inventory {
                 using (var db = new Database()) {
                     try {
                         db.BeginTransaction();
-                        db.Execute("delete t_instockitem where instockno=@0",InStockNo);
+                        db.Execute("delete t_instockitem where instockno=@0", InStockNo);
                         InStock.Remark = txtRemark.Text;
                         InStock.Num = items.Sum(k => k.Num);
                         InStock.OuterNo = txtOuterNo.Text;
                         db.Save(InStock);
                         items.ForEach(k => { k.Id = 0; db.Save(k); });
-                        
+
                         db.CompleteTransaction();
                     } catch (Exception) {
                         db.AbortTransaction();
@@ -95,15 +97,15 @@ namespace Ultra.Inventory {
                 InStock.InStockNo = InStockNo;
                 InStock.OuterNo = txtOuterNo.Text;
                 InStock.Creator = this.CurUser;
-                InStock.AuditDate= InStock.CreateDate = TimeSync.Default.CurrentSyncTime;
+                InStock.AuditDate = InStock.CreateDate = TimeSync.Default.CurrentSyncTime;
                 InStock.Num = items.Sum(k => k.Num);
 
                 using (var db = new Database()) {
                     try {
                         db.BeginTransaction();
                         db.Save(InStock);
-                        items.ForEach(k=>db.Save(k));
-                        
+                        items.ForEach(k => db.Save(k));
+
                         db.CompleteTransaction();
                     } catch (Exception) {
                         db.AbortTransaction();
@@ -132,30 +134,43 @@ namespace Ultra.Inventory {
             var item = view.GetFocusedDataSource<t_item>();
             if (item == null)
                 return;
-            var odr = gcOrder.GetFocusedDataSource<t_instockitem>();
+            var odr = gcItem.GetFocusedDataSource<t_instockitem>();
             if (odr == null)
                 return;
-
-            var odrs = gcOrder.GetDataSource<t_instockitem>();
-            if(odrs.Any(k=>k.ItemNo==item.ItemNo && k.Guid!=odr.Guid)){
-                MsgBox.ShowMessage("","不能添加同样的货物,同样的货物增加数量即可!");
-                return;
-            }
 
             odr.ItemName = item.ItemName;
             odr.ItemNo = item.ItemNo;
             odr.CostPrice = 0;
             odr.Num = 1;
 
-            gcOrder.RefreshDataSource();
+            gcItem.RefreshDataSource();
         }
 
         private void rspNum_EditValueChanged(object sender, EventArgs e) {
-            var odr = gcOrder.GetFocusedDataSource<t_instockitem>();
+            var odr = gcItem.GetFocusedDataSource<t_instockitem>();
             if (odr == null)
                 return;
             var spn = sender as DevExpress.XtraEditors.SpinEdit;
             odr.Num = (int)spn.Value;
+        }
+
+        private void rspLoc_EditValueChanged(object sender, EventArgs e) {
+            var gl = sender as DevExpress.XtraEditors.GridLookUpEdit;
+            if (gl == null)
+                return;
+            var view = gl.Properties.View;
+            if (view == null)
+                return;
+            var loc = view.GetFocusedDataSource<t_location>();
+            if (loc == null)
+                return;
+            var odr = gcItem.GetFocusedDataSource<t_instockitem>();
+            if (odr == null)
+                return;
+
+            odr.WareName = loc.WareCode;
+            odr.AreaName = loc.AreaName;
+            odr.LocName = loc.LocCode;
         }
     }
 }

@@ -53,6 +53,82 @@ namespace Ultra.Controls
             base.DisplayMember = "ReceiverName";
             base.ValueMember = "Guid";
         }
+    }
+
+    public class WareGridEdit : EntityGridEdit<t_ware> {
+        protected override List<t_ware> GetData() {
+            using (var db = new PetaPoco.Database()) {
+                return db.Fetch<t_ware>("where IsUsing=1");
+            }
+        }
+
+        public override t_ware GetSelectedValue() {
+            if (base.EditValue == null || string.IsNullOrEmpty(base.EditValue.ToString()))
+                return null;
+            var ds = base.Properties.DataSource as List<t_ware>;
+            if (null == ds)
+                return base.GetSelectedValue();
+            return ds.Where(k => k.Guid == Guid.Parse(base.EditValue.ToString())).SingleOrDefault();
+        }
+
+        public override t_ware SetSelectedValue(t_ware vl) {
+            if (null == vl)
+                return base.SetSelectedValue(vl);
+            this.EditValue = vl.Guid;
+
+            var kt = base.SetSelectedValue(vl);
+            var ds = base.Properties.DataSource as List<t_ware>;
+            if (null != ds) {
+                var mtch = ds.Where(k => k.Guid == kt.Guid).SingleOrDefault();
+                if (null == mtch)
+                    base.Properties.View.FocusedRowHandle = -99997;
+            }
+            return kt;
+        }
+
+        public WareGridEdit()
+            : base() {
+            base.DisplayMember = "WareName";
+            base.ValueMember = "Guid";
+        }
+    }
+
+    public class AreaGridEdit : EntityGridEdit<t_area> {
+        protected override List<t_area> GetData() {
+            using (var db = new PetaPoco.Database()) {
+                return db.Fetch<t_area>("where IsUsing=1");
+            }
+        }
+
+        public override t_area GetSelectedValue() {
+            if (base.EditValue == null || string.IsNullOrEmpty(base.EditValue.ToString()))
+                return null;
+            var ds = base.Properties.DataSource as List<t_area>;
+            if (null == ds)
+                return base.GetSelectedValue();
+            return ds.Where(k => k.Guid == Guid.Parse(base.EditValue.ToString())).SingleOrDefault();
+        }
+
+        public override t_area SetSelectedValue(t_area vl) {
+            if (null == vl)
+                return base.SetSelectedValue(vl);
+            this.EditValue = vl.Guid;
+
+            var kt = base.SetSelectedValue(vl);
+            var ds = base.Properties.DataSource as List<t_area>;
+            if (null != ds) {
+                var mtch = ds.Where(k => k.Guid == kt.Guid).SingleOrDefault();
+                if (null == mtch)
+                    base.Properties.View.FocusedRowHandle = -99997;
+            }
+            return kt;
+        }
+
+        public AreaGridEdit()
+            : base() {
+            base.DisplayMember = "AreaName";
+            base.ValueMember = "Guid";
+        }
     } 
 
 }

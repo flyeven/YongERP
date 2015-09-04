@@ -81,6 +81,42 @@
     <Compile Include="AdjInvtEditView.Designer.cs">
       <DependentUpon>AdjInvtEditView.cs</DependentUpon>
     </Compile>
+    <Compile Include="WareEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareEditView.Designer.cs">
+      <DependentUpon>WareEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WareView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WareView.Designer.cs">
+      <DependentUpon>WareView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AreaEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AreaEditView.Designer.cs">
+      <DependentUpon>AreaEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AreaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AreaView.Designer.cs">
+      <DependentUpon>AreaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocView.Designer.cs">
+      <DependentUpon>LocView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocEditView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocEditView.Designer.cs">
+      <DependentUpon>LocEditView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AdjInvtView.resx">
@@ -97,6 +133,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdjInvtEditView.resx">
       <DependentUpon>AdjInvtEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareEditView.resx">
+      <DependentUpon>WareEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WareView.resx">
+      <DependentUpon>WareView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AreaEditView.resx">
+      <DependentUpon>AreaEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AreaView.resx">
+      <DependentUpon>AreaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocView.resx">
+      <DependentUpon>LocView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocEditView.resx">
+      <DependentUpon>LocEditView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

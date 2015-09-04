@@ -25,8 +25,8 @@
         private void InitializeComponent() {
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.gcOrder = new Ultra.Surface.Controls.GridControlEx();
-            this.gvOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcItem = new Ultra.Surface.Controls.GridControlEx();
+            this.gvItem = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rspItem = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -37,19 +37,26 @@
             this.rspCostPrice = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rspNum = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rspLoc = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.btnDelOrder = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddOrder = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.txtOuterNo = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtRemark = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtInStockNo = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtOuterNo = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFill)).BeginInit();
@@ -59,19 +66,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rspLoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOuterNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInStockNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOuterNo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -103,53 +112,57 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.gcOrder);
+            this.xtraTabPage1.Controls.Add(this.gcItem);
             this.xtraTabPage1.Controls.Add(this.panelControl3);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(942, 359);
             this.xtraTabPage1.Text = "添加货物";
             // 
-            // gcOrder
+            // gcItem
             // 
-            this.gcOrder.ColorFieldName = null;
-            this.gcOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcOrder.Location = new System.Drawing.Point(0, 0);
-            this.gcOrder.MainView = this.gvOrder;
-            this.gcOrder.Name = "gcOrder";
-            this.gcOrder.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.gcItem.ColorFieldName = null;
+            this.gcItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcItem.Location = new System.Drawing.Point(0, 0);
+            this.gcItem.MainView = this.gvItem;
+            this.gcItem.Name = "gcItem";
+            this.gcItem.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rspItem,
             this.rspNum,
-            this.rspCostPrice});
-            this.gcOrder.ShowIndicator = true;
-            this.gcOrder.ShowRowNumber = true;
-            this.gcOrder.Size = new System.Drawing.Size(942, 330);
-            this.gcOrder.TabIndex = 5;
-            this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvOrder});
+            this.rspCostPrice,
+            this.rspLoc});
+            this.gcItem.ShowIndicator = true;
+            this.gcItem.ShowRowNumber = true;
+            this.gcItem.Size = new System.Drawing.Size(942, 330);
+            this.gcItem.TabIndex = 5;
+            this.gcItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvItem});
             // 
-            // gvOrder
+            // gvItem
             // 
-            this.gvOrder.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.gvOrder.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gvOrder.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.gvOrder.Appearance.SelectedRow.Options.UseBackColor = true;
-            this.gvOrder.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvItem.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.gvItem.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gvItem.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.gvItem.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.gvItem.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn6,
             this.gridColumn4,
+            this.gridColumn10,
+            this.gridColumn5,
+            this.gridColumn3,
             this.gridColumn7});
-            this.gvOrder.GridControl = this.gcOrder;
-            this.gvOrder.Name = "gvOrder";
-            this.gvOrder.OptionsView.ColumnAutoWidth = false;
-            this.gvOrder.OptionsView.EnableAppearanceEvenRow = true;
-            this.gvOrder.OptionsView.EnableAppearanceOddRow = true;
-            this.gvOrder.OptionsView.ShowAutoFilterRow = true;
-            this.gvOrder.OptionsView.ShowGroupPanel = false;
+            this.gvItem.GridControl = this.gcItem;
+            this.gvItem.Name = "gvItem";
+            this.gvItem.OptionsView.ColumnAutoWidth = false;
+            this.gvItem.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvItem.OptionsView.EnableAppearanceOddRow = true;
+            this.gvItem.OptionsView.ShowAutoFilterRow = true;
+            this.gvItem.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "货物名称";
+            this.gridColumn1.Caption = "商品名称";
             this.gridColumn1.ColumnEdit = this.rspItem;
             this.gridColumn1.FieldName = "ItemName";
             this.gridColumn1.Name = "gridColumn1";
@@ -196,7 +209,7 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "货物编码";
+            this.gridColumn2.Caption = "商品编码";
             this.gridColumn2.FieldName = "ItemNo";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
@@ -246,13 +259,77 @@
             this.rspNum.Name = "rspNum";
             this.rspNum.EditValueChanged += new System.EventHandler(this.rspNum_EditValueChanged);
             // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "仓库";
+            this.gridColumn10.FieldName = "WareName";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 4;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "区域";
+            this.gridColumn5.FieldName = "AreaName";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "库位";
+            this.gridColumn3.ColumnEdit = this.rspLoc;
+            this.gridColumn3.FieldName = "LocName";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 6;
+            // 
+            // rspLoc
+            // 
+            this.rspLoc.AutoHeight = false;
+            this.rspLoc.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rspLoc.DisplayMember = "LocName";
+            this.rspLoc.Name = "rspLoc";
+            this.rspLoc.ValueMember = "LocName";
+            this.rspLoc.View = this.gridView1;
+            this.rspLoc.EditValueChanged += new System.EventHandler(this.rspLoc_EditValueChanged);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "库位名称";
+            this.gridColumn11.FieldName = "LocName";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "库位编码";
+            this.gridColumn12.FieldName = "LocName";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "备注";
             this.gridColumn7.FieldName = "Remark";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // panelControl3
             // 
@@ -296,6 +373,21 @@
             this.panelControl1.Size = new System.Drawing.Size(948, 32);
             this.panelControl1.TabIndex = 2;
             // 
+            // txtOuterNo
+            // 
+            this.txtOuterNo.Location = new System.Drawing.Point(284, 5);
+            this.txtOuterNo.Name = "txtOuterNo";
+            this.txtOuterNo.Size = new System.Drawing.Size(159, 20);
+            this.txtOuterNo.TabIndex = 7;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(230, 8);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(48, 14);
+            this.labelControl3.TabIndex = 6;
+            this.labelControl3.Text = "来货单号";
+            // 
             // txtRemark
             // 
             this.txtRemark.Location = new System.Drawing.Point(479, 5);
@@ -315,6 +407,7 @@
             // 
             this.txtInStockNo.Location = new System.Drawing.Point(65, 5);
             this.txtInStockNo.Name = "txtInStockNo";
+            this.txtInStockNo.Properties.ReadOnly = true;
             this.txtInStockNo.Size = new System.Drawing.Size(159, 20);
             this.txtInStockNo.TabIndex = 1;
             // 
@@ -347,21 +440,6 @@
             this.btnClose.Text = "关闭(&C)";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(230, 8);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(48, 14);
-            this.labelControl3.TabIndex = 6;
-            this.labelControl3.Text = "来货单号";
-            // 
-            // txtOuterNo
-            // 
-            this.txtOuterNo.Location = new System.Drawing.Point(284, 5);
-            this.txtOuterNo.Name = "txtOuterNo";
-            this.txtOuterNo.Size = new System.Drawing.Size(159, 20);
-            this.txtOuterNo.TabIndex = 7;
-            // 
             // InStockEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -379,20 +457,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspCostPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rspLoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOuterNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInStockNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOuterNo.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -401,8 +481,8 @@
 
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private Surface.Controls.GridControlEx gcOrder;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvOrder;
+        private Surface.Controls.GridControlEx gcItem;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvItem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit rspItem;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
@@ -426,5 +506,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtOuterNo;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit rspLoc;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

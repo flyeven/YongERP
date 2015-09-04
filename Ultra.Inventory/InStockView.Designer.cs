@@ -28,6 +28,7 @@
             this.gcUnAudit = new Ultra.Surface.Controls.GridControlEx();
             this.gvUnAudit = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -36,6 +37,7 @@
             this.gcAudit = new Ultra.Surface.Controls.GridControlEx();
             this.gvAudit = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,6 +48,7 @@
             this.gcInvalid = new Ultra.Surface.Controls.GridControlEx();
             this.gvInvalid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,9 +65,9 @@
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlDetail = new DevExpress.XtraEditors.PanelControl();
             this.collapsibleSplitter1 = new Ultra.Surface.Controls.CollapsibleSplitter();
-            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
             this.tabMain.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -148,6 +151,14 @@
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
+            // gridColumn24
+            // 
+            this.gridColumn24.Caption = "来货单号";
+            this.gridColumn24.FieldName = "OuterNo";
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 1;
+            // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "商品总数";
@@ -194,7 +205,6 @@
             this.gcAudit.Location = new System.Drawing.Point(0, 0);
             this.gcAudit.MainView = this.gvAudit;
             this.gcAudit.Name = "gcAudit";
-            this.gcAudit.ShowIndicator = true;
             this.gcAudit.ShowRowNumber = true;
             this.gcAudit.Size = new System.Drawing.Size(949, 413);
             this.gcAudit.TabIndex = 1;
@@ -230,6 +240,14 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "来货单号";
+            this.gridColumn25.FieldName = "OuterNo";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 1;
             // 
             // gridColumn6
             // 
@@ -293,7 +311,6 @@
             this.gcInvalid.Location = new System.Drawing.Point(0, 0);
             this.gcInvalid.MainView = this.gvInvalid;
             this.gcInvalid.Name = "gcInvalid";
-            this.gcInvalid.ShowIndicator = true;
             this.gcInvalid.ShowRowNumber = true;
             this.gcInvalid.Size = new System.Drawing.Size(949, 413);
             this.gcInvalid.TabIndex = 1;
@@ -328,6 +345,14 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 0;
+            // 
+            // gridColumn26
+            // 
+            this.gridColumn26.Caption = "来货单号";
+            this.gridColumn26.FieldName = "OuterNo";
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 1;
             // 
             // gridColumn12
             // 
@@ -412,6 +437,9 @@
             this.gridColumn17,
             this.gridColumn18,
             this.gridColumn23,
+            this.gridColumn29,
+            this.gridColumn28,
+            this.gridColumn27,
             this.gridColumn20});
             this.gvOrder.GridControl = this.gcOrder;
             this.gvOrder.Name = "gvOrder";
@@ -462,7 +490,7 @@
             this.gridColumn20.FieldName = "CreateDate";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 4;
+            this.gridColumn20.VisibleIndex = 7;
             // 
             // pnlDetail
             // 
@@ -489,29 +517,29 @@
             this.collapsibleSplitter1.UseAnimations = false;
             this.collapsibleSplitter1.VisualStyle = Ultra.Surface.Controls.VisualStyles.Mozilla;
             // 
-            // gridColumn24
+            // gridColumn27
             // 
-            this.gridColumn24.Caption = "来货单号";
-            this.gridColumn24.FieldName = "OuterNo";
-            this.gridColumn24.Name = "gridColumn24";
-            this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 1;
+            this.gridColumn27.Caption = "库位";
+            this.gridColumn27.FieldName = "LocName";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 6;
             // 
-            // gridColumn25
+            // gridColumn28
             // 
-            this.gridColumn25.Caption = "来货单号";
-            this.gridColumn25.FieldName = "OuterNo";
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 1;
+            this.gridColumn28.Caption = "区域";
+            this.gridColumn28.FieldName = "AreaName";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 5;
             // 
-            // gridColumn26
+            // gridColumn29
             // 
-            this.gridColumn26.Caption = "来货单号";
-            this.gridColumn26.FieldName = "OuterNo";
-            this.gridColumn26.Name = "gridColumn26";
-            this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 1;
+            this.gridColumn29.Caption = "仓库";
+            this.gridColumn29.FieldName = "WareName";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 4;
             // 
             // InStockView
             // 
@@ -594,5 +622,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
     }
 }

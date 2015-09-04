@@ -30,7 +30,7 @@ namespace Ultra.Item
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
@@ -40,9 +40,9 @@ namespace Ultra.Item
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.spnPrice = new DevExpress.XtraEditors.SpinEdit();
-            this.spnPointFee = new DevExpress.XtraEditors.SpinEdit();
+            this.spnCostPrice = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFill)).BeginInit();
@@ -54,38 +54,38 @@ namespace Ultra.Item
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnPrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnPointFee.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnCostPrice.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
-            this.pnlMain.Size = new System.Drawing.Size(313, 191);
+            this.pnlMain.Size = new System.Drawing.Size(307, 179);
             // 
             // pnlFill
             // 
-            this.pnlFill.Controls.Add(this.spnPointFee);
+            this.pnlFill.Controls.Add(this.spnCostPrice);
+            this.pnlFill.Controls.Add(this.labelControl5);
             this.pnlFill.Controls.Add(this.spnPrice);
-            this.pnlFill.Controls.Add(this.labelControl4);
             this.pnlFill.Controls.Add(this.labelControl3);
             this.pnlFill.Controls.Add(this.labelControl2);
             this.pnlFill.Controls.Add(this.labelControl1);
             this.pnlFill.Controls.Add(this.chk);
             this.pnlFill.Controls.Add(this.txtItemName);
             this.pnlFill.Controls.Add(this.txtItemNo);
-            this.pnlFill.Size = new System.Drawing.Size(313, 145);
+            this.pnlFill.Size = new System.Drawing.Size(307, 133);
             // 
             // pnlBottom
             // 
             this.pnlBottom.Controls.Add(this.btnOK);
             this.pnlBottom.Controls.Add(this.btnClose);
-            this.pnlBottom.Location = new System.Drawing.Point(0, 145);
-            this.pnlBottom.Size = new System.Drawing.Size(313, 46);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 133);
+            this.pnlBottom.Size = new System.Drawing.Size(307, 46);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(226, 6);
+            this.btnClose.Location = new System.Drawing.Point(220, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 35);
             this.btnClose.TabIndex = 14;
@@ -95,7 +95,7 @@ namespace Ultra.Item
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(133, 6);
+            this.btnOK.Location = new System.Drawing.Point(127, 6);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 35);
             this.btnOK.TabIndex = 13;
@@ -108,10 +108,10 @@ namespace Ultra.Item
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(220, 20);
             this.txtItemName.TabIndex = 1;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "不能为空";
-            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
-            this.dxValidationProvider1.SetValidationRule(this.txtItemName, conditionValidationRule1);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "不能为空";
+            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
+            this.dxValidationProvider1.SetValidationRule(this.txtItemName, conditionValidationRule2);
             // 
             // txtItemNo
             // 
@@ -123,7 +123,7 @@ namespace Ultra.Item
             // chk
             // 
             this.chk.EditValue = true;
-            this.chk.Location = new System.Drawing.Point(65, 112);
+            this.chk.Location = new System.Drawing.Point(65, 111);
             this.chk.Name = "chk";
             this.chk.Properties.Caption = "启用";
             this.chk.Size = new System.Drawing.Size(51, 19);
@@ -147,19 +147,11 @@ namespace Ultra.Item
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(37, 63);
+            this.labelControl3.Location = new System.Drawing.Point(37, 89);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(24, 14);
             this.labelControl3.TabIndex = 10;
-            this.labelControl3.Text = "价格";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(37, 89);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(24, 14);
-            this.labelControl4.TabIndex = 28;
-            this.labelControl4.Text = "积分";
+            this.labelControl3.Text = "售价";
             // 
             // spnPrice
             // 
@@ -168,26 +160,34 @@ namespace Ultra.Item
             0,
             0,
             0});
-            this.spnPrice.Location = new System.Drawing.Point(67, 59);
+            this.spnPrice.Location = new System.Drawing.Point(67, 85);
             this.spnPrice.Name = "spnPrice";
             this.spnPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.spnPrice.Size = new System.Drawing.Size(220, 20);
             this.spnPrice.TabIndex = 29;
             // 
-            // spnPointFee
+            // spnCostPrice
             // 
-            this.spnPointFee.EditValue = new decimal(new int[] {
+            this.spnCostPrice.EditValue = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.spnPointFee.Location = new System.Drawing.Point(67, 86);
-            this.spnPointFee.Name = "spnPointFee";
-            this.spnPointFee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.spnCostPrice.Location = new System.Drawing.Point(67, 58);
+            this.spnCostPrice.Name = "spnCostPrice";
+            this.spnCostPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spnPointFee.Size = new System.Drawing.Size(220, 20);
-            this.spnPointFee.TabIndex = 30;
+            this.spnCostPrice.Size = new System.Drawing.Size(220, 20);
+            this.spnCostPrice.TabIndex = 32;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(37, 62);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(24, 14);
+            this.labelControl5.TabIndex = 31;
+            this.labelControl5.Text = "成本";
             // 
             // NewView
             // 
@@ -195,10 +195,12 @@ namespace Ultra.Item
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(313, 191);
+            this.ClientSize = new System.Drawing.Size(307, 179);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "NewView";
             this.ShowIcon = false;
-            this.Text = "添加货物";
+            this.Text = "编辑 ";
             this.Load += new System.EventHandler(this.NewView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
@@ -212,7 +214,7 @@ namespace Ultra.Item
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnPrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnPointFee.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnCostPrice.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -228,8 +230,8 @@ namespace Ultra.Item
         private LabelControl labelControl3;
         private LabelControl labelControl2;
         private LabelControl labelControl1;
-        private SpinEdit spnPointFee;
         private SpinEdit spnPrice;
-        private LabelControl labelControl4;
+        private SpinEdit spnCostPrice;
+        private LabelControl labelControl5;
     }
 }

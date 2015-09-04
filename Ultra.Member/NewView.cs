@@ -33,10 +33,6 @@ namespace Ultra.Member {
                         Guid = Guid.NewGuid(),
                         ReceiverNo  = txtReceiverNo.Text,
                         ReceiverName = txtReceiverName.Text,
-                        CurBalance=spnCurBalance.Value,
-                        CurPointFee=spnCurPointFee.Value,
-                        RecvBalance=spnRecvBalance.Value,
-                        RecvPointFee=spnRecvPointFee.Value,
                         ReceiverMobile=txtReceiverMobile.Text,
                         ReceiverAddress=txtReceiverAddress.Text,                        
                         CreateDate = TimeSync.Default.CurrentSyncTime,
@@ -51,10 +47,6 @@ namespace Ultra.Member {
                     if (null != et) {
                         et.ReceiverNo  = txtReceiverNo.Text;
                         et.ReceiverName = txtReceiverName.Text;
-                        et.CurBalance=spnCurBalance.Value;
-                        et.CurPointFee=spnCurPointFee.Value;
-                        et.RecvBalance=spnRecvBalance.Value;
-                        et.RecvPointFee=spnRecvPointFee.Value;
                         et.ReceiverMobile=txtReceiverMobile.Text;
                         et.ReceiverAddress=txtReceiverAddress.Text;
                         et.IsUsing=chk.Checked;
@@ -77,10 +69,6 @@ namespace Ultra.Member {
                             txtReceiverNo.Text = et.ReceiverNo;
                             txtReceiverName.Text = et.ReceiverName;
                             txtReceiverMobile.Text = et.ReceiverMobile;
-                            spnCurBalance.Value = et.CurBalance;
-                            spnCurPointFee.Value = et.CurPointFee;
-                            spnRecvBalance.Value = et.RecvBalance;
-                            spnRecvPointFee.Value = et.RecvPointFee;
                             txtReceiverAddress.Text = et.ReceiverAddress;
                             txtRemark.Text = et.Remark;
                             chk.Checked = et.IsUsing;

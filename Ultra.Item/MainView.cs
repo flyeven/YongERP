@@ -53,7 +53,8 @@ namespace Ultra.Item
                     this.myBar.btnRefresh,
                     this.myBar.btnExport,
                     myBar.btnUsing,
-                    myBar.btnUnUsing
+                    myBar.btnUnUsing,
+                    myBar.btnImport
                 };
             }
         }
@@ -73,6 +74,14 @@ namespace Ultra.Item
             myBar.btnExport.ItemClick += barBtnExport_ItemClick;
             myBar.btnUsing.ItemClick += btnUsing_ItemClick;
             myBar.btnUnUsing.ItemClick += btnUnUsing_ItemClick;
+            myBar.btnImport.ItemClick += btnImport_ItemClick;
+        }
+
+        void btnImport_ItemClick(object sender, ItemClickEventArgs e) {
+            var vw = new ImportView();
+            if (Lanucher.InitView(vw).ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                barBtnRefresh_ItemClick(null, null);
+            }
         }
 
         void btnUnUsing_ItemClick(object sender, ItemClickEventArgs e) {

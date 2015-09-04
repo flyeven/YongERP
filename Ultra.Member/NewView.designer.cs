@@ -37,20 +37,12 @@ namespace Ultra.Member
             this.txtReceiverNo = new DevExpress.XtraEditors.TextEdit();
             this.txtReceiverName = new DevExpress.XtraEditors.TextEdit();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
+            this.txtReceiverMobile = new DevExpress.XtraEditors.TextEdit();
             this.chk = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.spnCurBalance = new DevExpress.XtraEditors.SpinEdit();
-            this.spnCurPointFee = new DevExpress.XtraEditors.SpinEdit();
-            this.spnRecvPointFee = new DevExpress.XtraEditors.SpinEdit();
-            this.spnRecvBalance = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.txtReceiverMobile = new DevExpress.XtraEditors.TextEdit();
             this.txtReceiverAddress = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtRemark = new DevExpress.XtraEditors.TextEdit();
@@ -63,55 +55,43 @@ namespace Ultra.Member
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chk.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnCurBalance.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnCurPointFee.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnRecvPointFee.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnRecvBalance.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverMobile.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chk.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
-            this.pnlMain.Size = new System.Drawing.Size(332, 315);
+            this.pnlMain.Size = new System.Drawing.Size(330, 217);
             // 
             // pnlFill
             // 
             this.pnlFill.Controls.Add(this.txtRemark);
             this.pnlFill.Controls.Add(this.labelControl9);
-            this.pnlFill.Controls.Add(this.spnRecvPointFee);
-            this.pnlFill.Controls.Add(this.spnRecvBalance);
             this.pnlFill.Controls.Add(this.labelControl5);
-            this.pnlFill.Controls.Add(this.labelControl6);
-            this.pnlFill.Controls.Add(this.labelControl7);
-            this.pnlFill.Controls.Add(this.labelControl8);
             this.pnlFill.Controls.Add(this.txtReceiverMobile);
             this.pnlFill.Controls.Add(this.txtReceiverAddress);
-            this.pnlFill.Controls.Add(this.spnCurPointFee);
-            this.pnlFill.Controls.Add(this.spnCurBalance);
-            this.pnlFill.Controls.Add(this.labelControl4);
             this.pnlFill.Controls.Add(this.labelControl3);
             this.pnlFill.Controls.Add(this.labelControl2);
             this.pnlFill.Controls.Add(this.labelControl1);
             this.pnlFill.Controls.Add(this.chk);
             this.pnlFill.Controls.Add(this.txtReceiverNo);
             this.pnlFill.Controls.Add(this.txtReceiverName);
-            this.pnlFill.Size = new System.Drawing.Size(332, 269);
+            this.pnlFill.Size = new System.Drawing.Size(330, 171);
             // 
             // pnlBottom
             // 
             this.pnlBottom.Controls.Add(this.btnOK);
             this.pnlBottom.Controls.Add(this.btnClose);
-            this.pnlBottom.Location = new System.Drawing.Point(0, 269);
-            this.pnlBottom.Size = new System.Drawing.Size(332, 46);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 171);
+            this.pnlBottom.Size = new System.Drawing.Size(330, 46);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(245, 6);
+            this.btnClose.Location = new System.Drawing.Point(243, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 35);
             this.btnClose.TabIndex = 14;
@@ -121,7 +101,7 @@ namespace Ultra.Member
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(152, 6);
+            this.btnOK.Location = new System.Drawing.Point(150, 6);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 35);
             this.btnOK.TabIndex = 13;
@@ -149,10 +129,21 @@ namespace Ultra.Member
             conditionValidationRule3.ErrorText = "不能为空";
             this.dxValidationProvider1.SetValidationRule(this.txtReceiverName, conditionValidationRule3);
             // 
+            // txtReceiverMobile
+            // 
+            this.txtReceiverMobile.Location = new System.Drawing.Point(67, 59);
+            this.txtReceiverMobile.Name = "txtReceiverMobile";
+            this.txtReceiverMobile.Size = new System.Drawing.Size(242, 20);
+            this.txtReceiverMobile.TabIndex = 31;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "不能为空";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
+            this.dxValidationProvider1.SetValidationRule(this.txtReceiverMobile, conditionValidationRule1);
+            // 
             // chk
             // 
             this.chk.EditValue = true;
-            this.chk.Location = new System.Drawing.Point(65, 244);
+            this.chk.Location = new System.Drawing.Point(65, 135);
             this.chk.Name = "chk";
             this.chk.Properties.Caption = "启用";
             this.chk.Size = new System.Drawing.Size(51, 19);
@@ -182,123 +173,24 @@ namespace Ultra.Member
             this.labelControl3.TabIndex = 10;
             this.labelControl3.Text = "电话";
             // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(13, 89);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(48, 14);
-            this.labelControl4.TabIndex = 28;
-            this.labelControl4.Text = "当前积分";
-            // 
-            // spnCurBalance
-            // 
-            this.spnCurBalance.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spnCurBalance.Location = new System.Drawing.Point(67, 115);
-            this.spnCurBalance.Name = "spnCurBalance";
-            this.spnCurBalance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spnCurBalance.Size = new System.Drawing.Size(242, 20);
-            this.spnCurBalance.TabIndex = 29;
-            // 
-            // spnCurPointFee
-            // 
-            this.spnCurPointFee.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spnCurPointFee.Location = new System.Drawing.Point(67, 86);
-            this.spnCurPointFee.Name = "spnCurPointFee";
-            this.spnCurPointFee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spnCurPointFee.Size = new System.Drawing.Size(242, 20);
-            this.spnCurPointFee.TabIndex = 30;
-            // 
-            // spnRecvPointFee
-            // 
-            this.spnRecvPointFee.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spnRecvPointFee.Location = new System.Drawing.Point(67, 167);
-            this.spnRecvPointFee.Name = "spnRecvPointFee";
-            this.spnRecvPointFee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spnRecvPointFee.Size = new System.Drawing.Size(242, 20);
-            this.spnRecvPointFee.TabIndex = 38;
-            // 
-            // spnRecvBalance
-            // 
-            this.spnRecvBalance.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.spnRecvBalance.Location = new System.Drawing.Point(67, 141);
-            this.spnRecvBalance.Name = "spnRecvBalance";
-            this.spnRecvBalance.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.spnRecvBalance.Size = new System.Drawing.Size(242, 20);
-            this.spnRecvBalance.TabIndex = 37;
-            // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(37, 197);
+            this.labelControl5.Location = new System.Drawing.Point(37, 88);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(24, 14);
             this.labelControl5.TabIndex = 36;
             this.labelControl5.Text = "地址";
             // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(13, 173);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(48, 14);
-            this.labelControl6.TabIndex = 35;
-            this.labelControl6.Text = "报单积分";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(13, 144);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(48, 14);
-            this.labelControl7.TabIndex = 34;
-            this.labelControl7.Text = "报单余额";
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(13, 118);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(48, 14);
-            this.labelControl8.TabIndex = 33;
-            this.labelControl8.Text = "当前余额";
-            // 
-            // txtReceiverMobile
-            // 
-            this.txtReceiverMobile.Location = new System.Drawing.Point(67, 59);
-            this.txtReceiverMobile.Name = "txtReceiverMobile";
-            this.txtReceiverMobile.Size = new System.Drawing.Size(242, 20);
-            this.txtReceiverMobile.TabIndex = 31;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "不能为空";
-            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
-            this.dxValidationProvider1.SetValidationRule(this.txtReceiverMobile, conditionValidationRule1);
-            // 
             // txtReceiverAddress
             // 
-            this.txtReceiverAddress.Location = new System.Drawing.Point(67, 194);
+            this.txtReceiverAddress.Location = new System.Drawing.Point(67, 85);
             this.txtReceiverAddress.Name = "txtReceiverAddress";
             this.txtReceiverAddress.Size = new System.Drawing.Size(242, 20);
             this.txtReceiverAddress.TabIndex = 32;
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(37, 224);
+            this.labelControl9.Location = new System.Drawing.Point(37, 115);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(24, 14);
             this.labelControl9.TabIndex = 40;
@@ -306,7 +198,7 @@ namespace Ultra.Member
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(67, 218);
+            this.txtRemark.Location = new System.Drawing.Point(67, 109);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(242, 20);
             this.txtRemark.TabIndex = 41;
@@ -317,7 +209,7 @@ namespace Ultra.Member
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(332, 315);
+            this.ClientSize = new System.Drawing.Size(330, 217);
             this.Name = "NewView";
             this.ShowIcon = false;
             this.Text = "添加顾客";
@@ -332,12 +224,8 @@ namespace Ultra.Member
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chk.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnCurBalance.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnCurPointFee.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnRecvPointFee.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spnRecvBalance.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverMobile.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chk.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -355,17 +243,9 @@ namespace Ultra.Member
         private LabelControl labelControl3;
         private LabelControl labelControl2;
         private LabelControl labelControl1;
-        private SpinEdit spnCurPointFee;
-        private SpinEdit spnCurBalance;
-        private LabelControl labelControl4;
         private TextEdit txtRemark;
         private LabelControl labelControl9;
-        private SpinEdit spnRecvPointFee;
-        private SpinEdit spnRecvBalance;
         private LabelControl labelControl5;
-        private LabelControl labelControl6;
-        private LabelControl labelControl7;
-        private LabelControl labelControl8;
         private TextEdit txtReceiverMobile;
         private TextEdit txtReceiverAddress;
     }

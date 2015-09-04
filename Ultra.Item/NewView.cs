@@ -39,7 +39,7 @@ namespace Ultra.Item {
                         ItemName  = txtItemName.Text,
                         ItemNo = txtItemNo.Text,
                         Price=spnPrice.Value,
-                        PointFee=spnPointFee.Value,
+                        CostPrice=spnCostPrice.Value,
                         CreateDate = TimeSync.Default.CurrentSyncTime,
                         Creator=this.CurUser,
                         IsUsing=chk.Checked,
@@ -53,7 +53,7 @@ namespace Ultra.Item {
                         et.ItemName = txtItemName.Text;
                         et.ItemNo = txtItemNo.Text;
                         et.Price=spnPrice.Value;
-                        et.PointFee = spnPointFee.Value;
+                        et.CostPrice = spnCostPrice.Value;
                         et.IsUsing=chk.Checked;
                         et.Remark = string.Empty;
                     }
@@ -73,7 +73,6 @@ namespace Ultra.Item {
                             txtItemName.Text = et.ItemName;
                             txtItemNo.Text = et.ItemNo;
                             spnPrice.Value = et.Price;
-                            spnPointFee.Value = et.PointFee;
                             chk.Checked = et.IsUsing;
                         }
                     } catch (Exception ex) {
