@@ -34,10 +34,10 @@ namespace Ultra.Trade {
         public List<Ultra.Surface.Interfaces.PermitGridView> Grids {
             get {
                 return new List<Ultra.Surface.Interfaces.PermitGridView> { 
-                new Ultra.Surface.Interfaces.PermitGridView(this.gvUnSub,"未提交"),
-                new Ultra.Surface.Interfaces.PermitGridView(this.gvSubed,"已提交"),
+                new Ultra.Surface.Interfaces.PermitGridView(this.gvUnSub,"待审核"),
+                new Ultra.Surface.Interfaces.PermitGridView(this.gvSubed,"已审核"),
                 new Ultra.Surface.Interfaces.PermitGridView(this.gvPrinted,"已打印"),
-                new Ultra.Surface.Interfaces.PermitGridView(this.gvOrder,"货物信息")
+                new Ultra.Surface.Interfaces.PermitGridView(this.gvOrder,"商品信息")
             };
             }
         }
@@ -54,7 +54,7 @@ namespace Ultra.Trade {
                     myBar.btnModify,
                     myBar.btnRefresh,
                     myBar.btnExport,
-                    myBar.btnSubmit,
+                    myBar.btnReView,
                     myBar.btnInvalid,
                     myBar.btnPrint
                 };
@@ -71,10 +71,10 @@ namespace Ultra.Trade {
             myBar.btnCreate.ItemClick += barBtnNew_ItemClick;
             myBar.btnRefresh.ItemClick += barBtnRefresh_ItemClick;
             myBar.btnExport.ItemClick += barBtnExport_ItemClick;
-            myBar.btnSubmit.ItemClick += btnSubmit_ItemClick;
             myBar.btnInvalid.ItemClick += btnInvalid_ItemClick;
             myBar.btnModify.ItemClick += barBtnEdt_ItemClick;
             myBar.btnPrint.ItemClick += btnPrint_ItemClick;
+            myBar.btnReView.ItemClick += btnReView_ItemClick;
 
             gvUnSub.FocusedRowChanged += gv_FocusedRowChanged;
             gvSubed.FocusedRowChanged += gv_FocusedRowChanged;
@@ -83,9 +83,47 @@ namespace Ultra.Trade {
             tabMain_SelectedPageChanged(null, null);
         }
 
+        /// <summary>
+        /// 审核
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void btnReView_ItemClick(object sender, ItemClickEventArgs e) {
+            var et = gcUnSub.GetFocusedDataSource<t_trade>();
+            if (null == et)
+                return;
+
+            if (MsgBox.ShowYesNoMessage("", "确定要审核此出货单?") == DialogResult.Yes) {
+                using (var db = new Database()) {
+                    try {
+                        var result = new SqlParameter() {
+                            Direction = ParameterDirection.Output,
+                            SqlDbType = SqlDbType.Bit,
+                            ParameterName = "@result"
+                        };
+                        db.BeginTransaction();
+                        db.Update<t_trade>(" set IsAudit=1 where guid=@0", et.Guid);
+                        db.Execute("exec p_tradeupdateinvt @0,@1 output", et.Guid, result);
+
+                        if (!(bool)result.Value) {
+                            MsgBox.ShowMessage("", "库存不足!");
+                            db.AbortTransaction();
+                        } else {
+                            db.CompleteTransaction();
+                            gcUnSub.RemoveSelected();
+                        }
+                    } catch (Exception) {
+                        db.AbortTransaction();
+                        throw;
+                    }
+                }
+            }
+        }
+
         void gv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
             var view = sender as DevExpress.XtraGrid.Views.Grid.GridView;
-            if (view == null) return;
+            if (view == null)
+                return;
             var trd = view.GetFocusedDataSource<t_trade>();
             if (trd == null) {
                 gcOrder.DataSource = null;
@@ -99,15 +137,17 @@ namespace Ultra.Trade {
         void btnPrint_ItemClick(object sender, ItemClickEventArgs e) {
             var trds = new List<t_trade>();
             switch (tabMain.SelectedTabPage.Text) {
-                case "已提交":
+                case "已审核":
                     trds = gvSubed.GetSelectedDataSource<t_trade>();
-                    if (trds == null || trds.Count < 1) return;
+                    if (trds == null || trds.Count < 1)
+                        return;
                     UpdatePrintData(trds);
                     DoPrint(trds);
                     break;
                 case "已打印":
                     trds = gvPrinted.GetSelectedDataSource<t_trade>();
-                    if (trds == null || trds.Count < 1) return;
+                    if (trds == null || trds.Count < 1)
+                        return;
                     UpdatePrintCnt(trds);
                     DoPrint(trds);
                     break;
@@ -147,7 +187,6 @@ namespace Ultra.Trade {
                 var vtrds = db.Fetch<t_trade>(string.Format(" where guid in ('{0}')", whr));
                 var orders = db.Fetch<t_order>(string.Format(" where tradeguid in ('{0}')", whr));
                 vtrds.ForEach(trd => {
-                    //trd.DeliveryDateStr = (trd.DeliveryDate ?? TimeSync.Default.CurrentSyncTime).ToString("yyyy年MM月dd日");
                     var prtinfo = new PrintInfo();
                     prtinfo.Trade = trd;
                     prtinfo.Orders = orders.Where(odr => odr.TradeGuid == trd.Guid).ToList();
@@ -164,40 +203,20 @@ namespace Ultra.Trade {
 
         void btnInvalid_ItemClick(object sender, ItemClickEventArgs e) {
             var et = gcUnSub.GetFocusedDataSource<t_trade>();
-            if (null == et) return;
+            if (null == et)
+                return;
             using (var db = new Database()) {
                 db.Update<t_trade>(" set IsInvalid=1 where guid=@0", et.Guid);
             }
             gcUnSub.RemoveSelected();
         }
 
-        void btnSubmit_ItemClick(object sender, ItemClickEventArgs e) {
-            var et = gcUnSub.GetFocusedDataSource<t_trade>();
-            if (null == et) return;
-
-            if (MsgBox.ShowYesNoMessage("", "确定要提交此出货单?") == DialogResult.Yes) {
-                using (var db = new Database()) {
-                    try {
-                        db.BeginTransaction();
-                        db.Update<t_trade>(" set IsSubmit=1 where guid=@0", et.Guid);
-                        db.Execute("exec p_tradeupdateinvt @0", et.Guid);
-                        db.Execute(string.Format(Sql_UpdateMember, et.Guid.ToString()));
-                        db.CompleteTransaction();
-                    } catch (Exception) {
-                        db.AbortTransaction();
-                        throw;
-                    }
-                }
-                gcUnSub.RemoveSelected();
-            }
-        }
-
         void barBtnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             switch (tabMain.SelectedTabPage.Text) {
-                case "未提交":
+                case "待审核":
                     this.gcUnSub.GridExportXls();
                     break;
-                case "已提交":
+                case "已审核":
                     this.gcSubed.GridExportXls();
                     break;
                 case "已打印":
@@ -214,19 +233,19 @@ namespace Ultra.Trade {
 
         void barBtnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             switch (tabMain.SelectedTabPage.Text) {
-                case "未提交":
+                case "待审核":
                     using (var db = new Database()) {
-                        gcUnSub.DataSource = db.Fetch<t_trade>(" where isnull(issubmit,0)=0 and isnull(IsPrint,0)=0 and isnull(isinvalid,0)=0");
+                        gcUnSub.DataSource = db.Fetch<t_trade>(" where isnull(IsAudit,0)=0 and isnull(IsPrint,0)=0 and isnull(isinvalid,0)=0");
                     }
                     break;
-                case "已提交":
+                case "已审核":
                     using (var db = new Database()) {
-                        gcSubed.DataSource = db.Fetch<t_trade>(" where isnull(issubmit,0)=1 and isnull(IsPrint,0)=0 and isnull(isinvalid,0)=0");
+                        gcSubed.DataSource = db.Fetch<t_trade>(" where isnull(IsAudit,0)=1 and isnull(IsPrint,0)=0 and isnull(isinvalid,0)=0");
                     }
                     break;
                 case "已打印":
                     using (var db = new Database()) {
-                        gcPrinted.DataSource = db.Fetch<t_trade>(" where isnull(issubmit,0)=1 and isnull(IsPrint,0)=1 and isnull(isinvalid,0)=0");
+                        gcPrinted.DataSource = db.Fetch<t_trade>(" where isnull(IsAudit,0)=1 and isnull(IsPrint,0)=1 and isnull(isinvalid,0)=0");
                     }
                     break;
                 default:
@@ -245,7 +264,8 @@ namespace Ultra.Trade {
 
         private void gridControlEx1_RowCellDoubleClick(object sender, MouseEventArgs e) {
             var et = gcUnSub.GetFocusedDataSource<t_trade>();
-            if (null == et) return;
+            if (null == et)
+                return;
             var vw = new NewView();
             Lanucher.InitView(vw);
             vw.EditMode = Ultra.Web.Core.Enums.EnViewEditMode.Edit;
@@ -263,10 +283,10 @@ namespace Ultra.Trade {
                     myBar.btnInvalid.Enabled =
                     myBar.btnPrint.Enabled = true;
             switch (tabMain.SelectedTabPage.Text) {
-                case "未提交":
+                case "待审核":
                     myBar.btnPrint.Enabled = false;
                     break;
-                case "已提交":
+                case "已审核":
                     myBar.btnCreate.Enabled =
                     myBar.btnModify.Enabled =
                     myBar.btnSubmit.Enabled =
@@ -282,104 +302,6 @@ namespace Ultra.Trade {
                     break;
             }
             barBtnRefresh_ItemClick(null, null);
-        }
-
-        public string Sql_UpdateInventory { 
-            get {
-                return @"
-declare @tb table(
-	ItemName nvarchar(200) NULL,
-	ItemNo nvarchar(50) NULL,
-	Price decimal(18, 2) NOT NULL,
-	PointFee decimal(18, 2) NOT NULL,
-	OldQty int NOT NULL,
-	NowQty int NOT NULL,
-	ActionName nvarchar(200) NULL,
-	ActionNo nvarchar(200) NULL)
-
-;with t as (
-select a.Guid,Delivery,ReceiverName,b.ItemNo,sum(b.Num) num,sum(Price) price,sum(PointFee) pointfee
- from t_trade a 
-join t_order b on a.guid=b.tradeguid 
-where a.guid in ('{0}')
-group by b.ItemNo,a.ReceiverName,a.Delivery,a.Guid
-)
-update a set a.qty=a.qty-b.num
-output deleted.ItemName,deleted.ItemNo,b.price,b.pointfee,deleted.Qty,inserted.Qty
-,b.ReceiverName+b.Delivery,cast(b.Guid as nvarchar(50)) into @tb
-from t_inventory a 
-join t b on a.ItemNo=b.ItemNo
-
-INSERT INTO dbo.t_inventorylog
-(Guid,ItemName,ItemNo,Price,PointFee
-,OldQty,NowQty,ActionName,ActionNo,CreateDate,Creator,IsUsing)
-select newid(),ItemName,ItemNo,Price,PointFee
-,OldQty,NowQty,ActionName,ActionNo,GETDATE(),'',1
-from @tb";
-            } 
-        }
-
-        public string Sql_UpdateMember {
-            get {
-                return @"
-select  a.memberguid,a.receivername,a.Delivery,SUM(b.num) num,SUM(b.orderprice) price,SUM(orderpointfee) pointfee
-into #trds from t_trade a 
-join t_order b on a.guid=b.tradeguid 
-where a.guid in ('{0}')
-group by a.memberguid,a.receivername,a.Delivery
-
-
-INSERT INTO t_pointfeelog
-([Guid],RecvName,[Desc],PointFee,CurPointFee,RecvPointFee,Remark,CreateDate,Creator,IsUsing)
-select NEWID(),a.receivername,Delivery+'+',pointfee
-,case Delivery 
-	when '报单款拿货' then b.CurPointFee
-	when '二次拿货' then b.CurPointFee+a.pointfee
-end
-,case Delivery 
-	when '报单款拿货' then b.RecvPointFee+a.pointfee
-	when '二次拿货' then b.RecvPointFee
-end
-,'',GETDATE(),'Sys',1
-from #trds a 
-join t_member b on a.memberguid=b.guid
-
-INSERT INTO t_balancelog
-([Guid],RecvName,[Desc],Amount,CurBalance,RecvBalance,Remark,CreateDate,Creator,IsUsing)
-select NEWID(),a.receivername,Delivery+'-',price
-,case Delivery 
-	when '报单款拿货' then b.CurBalance
-	when '二次拿货' then b.CurBalance-a.price
-end
-,case Delivery 
-	when '报单款拿货' then b.RecvBalance-a.price
-	when '二次拿货' then b.RecvBalance
-end
-,'',GETDATE(),'Sys',1
-   from #trds a 
-join t_member b on a.memberguid=b.guid
-
-update a set a.CurPointFee=case Delivery 
-	when '报单款拿货' then a.CurPointFee
-	when '二次拿货' then a.CurPointFee+b.pointfee
-end
-,a.RecvPointFee= case Delivery 
-	when '报单款拿货' then a.RecvPointFee+b.pointfee
-	when '二次拿货' then a.RecvPointFee
-end
-,a.CurBalance=case Delivery 
-	when '报单款拿货' then a.CurBalance
-	when '二次拿货' then a.CurBalance-b.price
-end
-,a.RecvBalance=case Delivery 
-	when '报单款拿货' then a.RecvBalance-b.price
-	when '二次拿货' then a.RecvBalance
-end
-from t_member a 
-join #trds b on a.guid=b.memberguid
-
-drop table #trds";
-            }
         }
     }
 }

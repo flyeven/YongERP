@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C87E261-5BEF-4C50-85BF-1D1BFF6F49AF}</ProjectGuid>
+    <ProjectGuid>{8D36E0A9-087F-4197-8C38-0623E9EDBFF9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ultra.Trade</RootNamespace>
-    <AssemblyName>Ultra.Trade</AssemblyName>
+    <RootNamespace>Ultra.ReturnGoods</RootNamespace>
+    <AssemblyName>Ultra.ReturnGoods</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -40,7 +43,7 @@
     <Reference Include="DevExpress.XtraGrid.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -55,33 +58,22 @@
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainView.designer.cs">
+    <Compile Include="MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="NewView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewView.designer.cs">
+    <Compile Include="NewView.Designer.cs">
       <DependentUpon>NewView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="rptFH.cs">
-      <SubType>Component</SubType>
+    <Compile Include="SendedTradeView.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rptFH.Designer.cs">
-      <DependentUpon>rptFH.cs</DependentUpon>
+    <Compile Include="SendedTradeView.Designer.cs">
+      <DependentUpon>SendedTradeView.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MainView.resx">
-      <DependentUpon>MainView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewView.resx">
-      <DependentUpon>NewView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rptFH.resx">
-      <DependentUpon>rptFH.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DbEntity\DbEntity.csproj">
@@ -89,7 +81,7 @@
       <Name>DbEntity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ultra.Controls\Ultra.Controls.csproj">
-      <Project>{728d000a-6853-4542-bfbf-596dd0c57e54}</Project>
+      <Project>{728D000A-6853-4542-BFBF-596DD0C57E54}</Project>
       <Name>Ultra.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ultra.Surface\Ultra.Surface.csproj">
@@ -100,6 +92,18 @@
       <Project>{AA07F32A-5FC8-4975-8A7F-1B23502D07AE}</Project>
       <Name>Ultra.Web.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewView.resx">
+      <DependentUpon>NewView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="SendedTradeView.resx">
+      <DependentUpon>SendedTradeView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

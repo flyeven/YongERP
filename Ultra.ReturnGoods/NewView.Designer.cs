@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraEditors;
-namespace Ultra.Trade
+namespace Ultra.ReturnGoods
 {
     partial class NewView
     {
@@ -29,22 +29,18 @@ namespace Ultra.Trade
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
-            this.dateDeliveryDate = new DevExpress.XtraEditors.DateEdit();
-            this.memgcEdt = new Ultra.Controls.MemberGridEdit();
-            this.memberGridEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.txtMemberName = new DevExpress.XtraEditors.ButtonEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dateDeliveryDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.txtReceiverAddress = new DevExpress.XtraEditors.TextEdit();
             this.txtMobile = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -61,9 +57,6 @@ namespace Ultra.Trade
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rspNum = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).BeginInit();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFill)).BeginInit();
@@ -71,12 +64,11 @@ namespace Ultra.Trade
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom)).BeginInit();
             this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memgcEdt.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberGridEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMemberName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMobile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -89,8 +81,6 @@ namespace Ultra.Trade
             ((System.ComponentModel.ISupportInitialize)(this.rspItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -131,120 +121,92 @@ namespace Ultra.Trade
             this.btnOK.Text = "确定(&E)";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // dateDeliveryDate
-            // 
-            this.dateDeliveryDate.EditValue = null;
-            this.dateDeliveryDate.Location = new System.Drawing.Point(534, 7);
-            this.dateDeliveryDate.Name = "dateDeliveryDate";
-            this.dateDeliveryDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateDeliveryDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dateDeliveryDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateDeliveryDate.Size = new System.Drawing.Size(170, 20);
-            this.dateDeliveryDate.TabIndex = 19;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "不能为空";
-            this.dxValidationProvider1.SetValidationRule(this.dateDeliveryDate, conditionValidationRule3);
-            // 
-            // memgcEdt
-            // 
-            this.memgcEdt.ClearButtonText = "清除所选";
-            this.memgcEdt.ColumnCaption = "顾客";
-            this.memgcEdt.DisplayMember = "ReceiverName";
-            this.memgcEdt.EditValue = "";
-            this.memgcEdt.Location = new System.Drawing.Point(64, 7);
-            this.memgcEdt.Name = "memgcEdt";
-            this.memgcEdt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "清除所选", -1, true, false, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "清除所选", null, null, true)});
-            this.memgcEdt.Properties.DisplayMember = "ReceiverName";
-            this.memgcEdt.Properties.NullText = "";
-            this.memgcEdt.Properties.ValueMember = "Guid";
-            this.memgcEdt.Properties.View = this.memberGridEdit1View;
-            this.memgcEdt.SelectedValue = null;
-            this.memgcEdt.Size = new System.Drawing.Size(174, 20);
-            this.memgcEdt.TabIndex = 13;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "不能为空";
-            this.dxValidationProvider1.SetValidationRule(this.memgcEdt, conditionValidationRule1);
-            this.memgcEdt.ValueMember = "Guid";
-            this.memgcEdt.EditValueChanged += new System.EventHandler(this.memgcEdt_EditValueChanged);
-            // 
-            // memberGridEdit1View
-            // 
-            this.memberGridEdit1View.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.memberGridEdit1View.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.memberGridEdit1View.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.memberGridEdit1View.Appearance.SelectedRow.Options.UseBackColor = true;
-            this.memberGridEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.memberGridEdit1View.Name = "memberGridEdit1View";
-            this.memberGridEdit1View.OptionsBehavior.AutoPopulateColumns = false;
-            this.memberGridEdit1View.OptionsBehavior.Editable = false;
-            this.memberGridEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.memberGridEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.txtMemberName);
+            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.dateDeliveryDate);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.txtReceiverAddress);
             this.panelControl1.Controls.Add(this.txtMobile);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.memgcEdt);
-            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(2, 2);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(916, 59);
             this.panelControl1.TabIndex = 0;
             // 
+            // txtMemberName
+            // 
+            this.txtMemberName.Location = new System.Drawing.Point(73, 6);
+            this.txtMemberName.Name = "txtMemberName";
+            this.txtMemberName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.txtMemberName.Properties.ReadOnly = true;
+            this.txtMemberName.Size = new System.Drawing.Size(199, 20);
+            this.txtMemberName.TabIndex = 29;
+            this.txtMemberName.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtMemberName_ButtonClick);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(19, 10);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(48, 14);
+            this.labelControl2.TabIndex = 28;
+            this.labelControl2.Text = "选择订单";
+            // 
+            // dateDeliveryDate
+            // 
+            this.dateDeliveryDate.EditValue = null;
+            this.dateDeliveryDate.Location = new System.Drawing.Point(544, 7);
+            this.dateDeliveryDate.Name = "dateDeliveryDate";
+            this.dateDeliveryDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDeliveryDate.Properties.ReadOnly = true;
+            this.dateDeliveryDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.dateDeliveryDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateDeliveryDate.Size = new System.Drawing.Size(164, 20);
+            this.dateDeliveryDate.TabIndex = 27;
+            // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(480, 10);
+            this.labelControl6.Location = new System.Drawing.Point(490, 9);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(48, 14);
-            this.labelControl6.TabIndex = 18;
+            this.labelControl6.TabIndex = 26;
             this.labelControl6.Text = "出货时间";
             // 
             // txtReceiverAddress
             // 
-            this.txtReceiverAddress.Location = new System.Drawing.Point(66, 33);
+            this.txtReceiverAddress.Location = new System.Drawing.Point(73, 32);
             this.txtReceiverAddress.Name = "txtReceiverAddress";
-            this.txtReceiverAddress.Size = new System.Drawing.Size(638, 20);
-            this.txtReceiverAddress.TabIndex = 17;
+            this.txtReceiverAddress.Size = new System.Drawing.Size(635, 20);
+            this.txtReceiverAddress.TabIndex = 25;
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(298, 6);
+            this.txtMobile.Location = new System.Drawing.Point(332, 7);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(176, 20);
-            this.txtMobile.TabIndex = 16;
+            this.txtMobile.Size = new System.Drawing.Size(152, 20);
+            this.txtMobile.TabIndex = 24;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(244, 9);
+            this.labelControl4.Location = new System.Drawing.Point(278, 10);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(48, 14);
-            this.labelControl4.TabIndex = 15;
+            this.labelControl4.TabIndex = 23;
             this.labelControl4.Text = "顾客电话";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(10, 36);
+            this.labelControl3.Location = new System.Drawing.Point(19, 35);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(48, 14);
-            this.labelControl3.TabIndex = 14;
+            this.labelControl3.TabIndex = 22;
             this.labelControl3.Text = "顾客地址";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(10, 10);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 14);
-            this.labelControl1.TabIndex = 12;
-            this.labelControl1.Text = "顾客姓名";
             // 
             // panelControl2
             // 
@@ -269,10 +231,9 @@ namespace Ultra.Trade
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.gcOrder);
-            this.xtraTabPage1.Controls.Add(this.panelControl3);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(906, 366);
-            this.xtraTabPage1.Text = "添加商品";
+            this.xtraTabPage1.Text = "选择商品";
             // 
             // gcOrder
             // 
@@ -286,7 +247,7 @@ namespace Ultra.Trade
             this.rspNum});
             this.gcOrder.ShowIndicator = true;
             this.gcOrder.ShowRowNumber = true;
-            this.gcOrder.Size = new System.Drawing.Size(906, 328);
+            this.gcOrder.Size = new System.Drawing.Size(906, 366);
             this.gcOrder.TabIndex = 5;
             this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOrder});
@@ -316,9 +277,9 @@ namespace Ultra.Trade
             // gridColumn1
             // 
             this.gridColumn1.Caption = "商品名称";
-            this.gridColumn1.ColumnEdit = this.rspItem;
             this.gridColumn1.FieldName = "ItemName";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
@@ -374,6 +335,7 @@ namespace Ultra.Trade
             this.gridColumn3.Caption = "成本";
             this.gridColumn3.FieldName = "CostPrice";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
@@ -425,34 +387,6 @@ namespace Ultra.Trade
             this.gridColumn5.VisibleIndex = 5;
             this.gridColumn5.Width = 150;
             // 
-            // panelControl3
-            // 
-            this.panelControl3.Controls.Add(this.btnDel);
-            this.panelControl3.Controls.Add(this.btnAdd);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(0, 328);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(906, 38);
-            this.panelControl3.TabIndex = 6;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(7, 5);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 28);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "添加行";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Location = new System.Drawing.Point(88, 5);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 28);
-            this.btnDel.TabIndex = 1;
-            this.btnDel.Text = "删除行";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
             // NewView
             // 
             this.AcceptButton = this.btnOK;
@@ -462,7 +396,7 @@ namespace Ultra.Trade
             this.ClientSize = new System.Drawing.Size(920, 508);
             this.Name = "NewView";
             this.ShowIcon = false;
-            this.Text = "新增出货单";
+            this.Text = "新增退货单";
             this.Load += new System.EventHandler(this.NewView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pnlMain)).EndInit();
             this.pnlMain.ResumeLayout(false);
@@ -471,13 +405,12 @@ namespace Ultra.Trade
             ((System.ComponentModel.ISupportInitialize)(this.pnlBottom)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memgcEdt.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memberGridEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMemberName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDeliveryDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiverAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMobile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -490,8 +423,6 @@ namespace Ultra.Trade
             ((System.ComponentModel.ISupportInitialize)(this.rspItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rspNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -518,17 +449,13 @@ namespace Ultra.Trade
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit rspNum;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private ButtonEdit txtMemberName;
+        private LabelControl labelControl2;
         private DateEdit dateDeliveryDate;
         private LabelControl labelControl6;
         private TextEdit txtReceiverAddress;
         private TextEdit txtMobile;
         private LabelControl labelControl4;
         private LabelControl labelControl3;
-        private Controls.MemberGridEdit memgcEdt;
-        private DevExpress.XtraGrid.Views.Grid.GridView memberGridEdit1View;
-        private LabelControl labelControl1;
-        private PanelControl panelControl3;
-        private SimpleButton btnDel;
-        private SimpleButton btnAdd;
     }
 }
